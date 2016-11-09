@@ -1,0 +1,44 @@
+This will (hopefully) be the project with all the final code
+
+The idea is to keep it in various individual functions that different people can work on and hopefully the stuff to do should be on the someone.io site.
+
+There is a --readme-- file that is somewhat broken...
+
+Functions to code
+
+Main stratergy code  put in robot.py
+
+-Atlas-
+Robot class with all functions below in 
+
+-communication-
+communication code
+
+-movement-
+move(distance)
+rotate(angle) / to an angle
+arm control
+turntable control - pump
+stop
+
+-vision-
+
+-logic-
+Get rotation solution
+
+
+-Sensors-
+Compas
+Gyro readings
+Ultrasound
+Bumpsensor
+detect if on turntable
+detect if embraced
+
+-Hobo-
+Exteds sr.Robot
+The high level competition code
+
+-Tobo-
+Extends Hobo
+Contains all of the test code

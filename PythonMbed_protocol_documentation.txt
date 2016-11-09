@@ -1,0 +1,52 @@
+Documentation for the mbed/python interface
+
+The mbed should be able to communicate in both a Synchronous and Asynchronous fashion
+Python should not nessesaraly lock if it communicates
+
+---Ignore---
+Data:
+    Size - 2 byte
+    Layout:
+        1 byte - Command/State
+        1 byte - Value
+---End Ignore---
+Async:
+    Python:
+        Python sends a command, one byte long. Continues with program.
+    Mbed:
+        Receives said command, and then INSTANTLY responds - this means that the python can continue.
+        
+Sync:
+    Python:
+        Python sends a command, one byte long. Program locks until a set response is recieved.
+        This means that once a Sync command is sent, the code after is performed when the action is finished.
+    Mbed:
+        Receives command, and then holds it's response until the action has finished.
+        
+        
+Command list:
+Sync:
+    Drive
+    Turn
+    Suck(includes pressure polling)
+Async:
+    Arm manipulation
+    Hand manipulation
+    Turntable rotation
+    
+Command layout:
+Drive:
+    Command tag: "D"
+    Size:  
+    Values: 1 byte for left motor, 1 byte right (nibble = 4 bit)
+    Note:
+        Each byte is singed valueDrive:
+Command tag: "T"
+    Size:  
+    Values: 1 byte for turn amount
+    Note:
+        Byte is signed, and as it ranged from -128,127 and the angles range -180,179 they must be scaled by 1.40625 (or some rounded value)
+Suck:
+    Command tag: 'S'
+    Values: 1 byte for time out
+    
